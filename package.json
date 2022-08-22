@@ -30,8 +30,14 @@
   },
   "homepage": "https://github.com/SevincMammadova/react_ts-boilerplate#readme",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.4",
+    "@types/react-redux": "^7.1.24",
+    "@types/redux-saga": "^0.10.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.2",
+    "redux": "^4.2.0",
+    "redux-saga": "^1.1.3"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",
@@ -39,6 +45,7 @@
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
     "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+    "@redux-devtools/extension": "^3.2.3",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@types/webpack-env": "^1.17.0",
@@ -60,6 +67,7 @@
     "lint-staged": "^13.0.3",
     "path": "^0.12.7",
     "prettier": "^2.7.1",
+    "redux-logger": "^3.0.6",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.3.1",
     "typescript": "^4.7.4",
