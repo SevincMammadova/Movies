@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
 
+import { MainLayout } from '../packages/layouts';
+
 export const App: FC = () => {
-    return <div> APP</div>;
+    return <MainLayout>Home sweet home</MainLayout>;
 };

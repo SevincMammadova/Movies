@@ -1,0 +1,19 @@
+import React, { FC } from 'react';
+
+import { IconWrapper, Wrapper, Text } from './styled';
+
+interface Props {
+    icon: JSX.Element;
+    text: string;
+    textRef: string;
+}
+
+export const InfoBlock: FC<Props> = ({ icon, text, textRef }) => {
+    console.log(icon, 'icon');
+    return (
+        <Wrapper>
+            <IconWrapper>{icon}</IconWrapper>
+            <Text href={textRef}>{text}</Text>
+        </Wrapper>
+    );
+};
