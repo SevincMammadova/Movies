@@ -6,7 +6,7 @@ import { Wrapper, Header, Main, Footer } from './styled';
 import { FooterInfoType } from './types';
 
 interface Props {
-    children: JSX.Element;
+    children?: JSX.Element;
 }
 
 export const MainLayout: FC<Props> = ({ children }) => {

@@ -2,14 +2,11 @@ import styled from 'styled-components';
 
 import { themeColors } from '../../const';
 
-// import { themeColors } from '../../const';
-
-export const Wrapper = styled.header`
-    position: relative;
-`;
+export const Wrapper = styled.div``;
 
 export const Header = styled.header`
     position: sticky;
+    z-index: 999;
     top: 0;
     background-color: ${themeColors.chineseBlack};
     display: flex;
