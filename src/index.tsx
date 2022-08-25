@@ -1,9 +1,11 @@
 import React from 'react';
+
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import { App } from './App/App';
 import store from './store/store';
+import './index.css';
 
 const root = document.getElementById('root');
 
