@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { themeColors } from '../../const';
@@ -11,15 +12,19 @@ export const Wrapper = styled.nav`
     gap: 30px;
 `;
 
-export const NavEl = styled.div<NProps>`
+export const NavEl = styled(NavLink)<NProps>`
     display: flex;
+    text-decoration: none;
     justify-content: center;
     align-items: center;
-    color: ${({ isActive }) => (isActive ? themeColors.pink : themeColors.white)};
+    color: ${themeColors.white};
     font-size: 20px;
     &:hover {
         color: ${themeColors.pink};
         cursor: pointer;
+    }
+    &.active {
+        color: ${themeColors.pink};
     }
 `;
 

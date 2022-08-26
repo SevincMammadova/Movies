@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
 
+import { Outlet } from 'react-router-dom';
+
 import { InfoBlock, Logo, NavBar } from '../../components';
 import { footerInfo } from './consts';
 import { Wrapper, Header, Main, Footer } from './styled';
@@ -9,14 +11,16 @@ interface Props {
     children?: JSX.Element;
 }
 
-export const MainLayout: FC<Props> = ({ children }) => {
+export const MainLayout: FC<Props> = () => {
     return (
         <Wrapper>
             <Header>
                 <Logo />
                 <NavBar />
             </Header>
-            <Main>{children}</Main>
+            <Main>
+                <Outlet />
+            </Main>
             <Footer>
                 {footerInfo?.map((item: FooterInfoType) => (
                     <InfoBlock

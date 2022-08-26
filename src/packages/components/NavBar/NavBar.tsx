@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
 import { SearchIcon } from '../../icons';
+import { PATH_NAMES } from '../../utils/path';
 import { Wrapper, NavEl, SearchButton, SearchInput, SearchIconBlock } from './styled';
 
 interface Props {
@@ -8,14 +9,12 @@ interface Props {
 }
 
 export const NavBar: FC<Props> = () => {
-    console.log('hello bich');
-
     return (
         <Wrapper>
-            <NavEl isActive> Home </NavEl>
-            <NavEl> Genres </NavEl>
-            <NavEl> top-250 </NavEl>
-            <NavEl> Contact </NavEl>
+            <NavEl to={PATH_NAMES.home}>Home</NavEl>
+            <NavEl to={PATH_NAMES.genres}> Genres </NavEl>
+            <NavEl to={PATH_NAMES.top250}> Top-250 </NavEl>
+            <NavEl to={PATH_NAMES.contacts}> Contact </NavEl>
             <SearchButton>
                 <SearchInput placeholder='Search...' />
                 <SearchIconBlock>
