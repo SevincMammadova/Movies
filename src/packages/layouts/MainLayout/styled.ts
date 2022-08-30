@@ -15,7 +15,9 @@ export const Header = styled.header`
     min-height: 70px;
     padding: 25px;
 `;
-export const Main = styled.main``;
+export const Main = styled.main`
+    margin: 30px 0;
+`;
 export const Footer = styled.footer`
     display: grid;
     grid-template-columns: repeat(3, 2fr);
