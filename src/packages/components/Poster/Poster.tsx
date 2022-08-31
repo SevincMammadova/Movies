@@ -1,21 +1,25 @@
 import React, { FC } from 'react';
 
-import { Wrapper, PosterWrapper, ButtonWrapper, PosterName, RunTime } from './styled';
+import { Wrapper, PosterWrapper, ButtonWrapper, PosterName, RunTime, PosterImage } from './styled';
 
 interface Props {
     btnText?: string;
     posterImage?: string;
-    posterName?: string;
+    posterName?: string | undefined;
     onClick?: () => void;
     runtime?: string;
 }
 
-export const Poster: FC<Props> = ({ btnText, posterName, runtime }) => {
+export const Poster: FC<Props> = (props: Props) => {
+    const { btnText, posterName, runtime, posterImage } = props;
     return (
         <Wrapper>
-            <PosterWrapper>{runtime && <RunTime>{runtime} </RunTime>}</PosterWrapper>
+            <PosterWrapper>
+                <PosterImage src={posterImage} />
+                {runtime && <RunTime>{runtime} </RunTime>}
+            </PosterWrapper>
             {posterName && <PosterName title={posterName}>{posterName}</PosterName>}
-            <ButtonWrapper>{btnText || 'something'}</ButtonWrapper>
+            <ButtonWrapper>{btnText || 'Watch Now'}</ButtonWrapper>
         </Wrapper>
     );
 };

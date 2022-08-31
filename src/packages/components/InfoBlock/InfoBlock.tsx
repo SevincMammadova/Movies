@@ -9,7 +9,6 @@ interface Props {
 }
 
 export const InfoBlock: FC<Props> = ({ icon, text, textRef }) => {
-    console.log(icon, 'icon');
     return (
         <Wrapper>
             <IconWrapper>{icon}</IconWrapper>

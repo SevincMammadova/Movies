@@ -8,3 +8,4 @@ src/index.jsx
 yarn-error.log
 yarn.lock
 src/packages/icons
+index.d.ts
