@@ -1,5 +1,14 @@
-import { homePageReducer, homePagaSliceName } from '../pages';
+import {
+    homePageReducer,
+    homePagaSliceName,
+    genresPageName,
+    genresPageReducer,
+    genrePageName,
+    genrePageReducer
+} from '../pages';
 
 export const rootReducer = {
-    [homePagaSliceName]: homePageReducer
+    [homePagaSliceName]: homePageReducer,
+    [genresPageName]: genresPageReducer,
+    [genrePageName]: genrePageReducer
 };

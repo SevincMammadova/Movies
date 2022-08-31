@@ -3,8 +3,10 @@ export const PATH_NAMES = {
     genres: 'genres',
     top250: 'top250',
     contacts: 'contacts',
-    genre: 'genres/:genre',
+    genre: 'genres/:mediaType',
     popularMovies: 'popular',
     newReleases: 'new-releases',
-    moviePage: 'movie/:movieName'
+    moviePage: ':movieName/:id',
+    moviesGenre: ':movieGenre/:id',
+    TvGenre: ':tvGenre'
 };
