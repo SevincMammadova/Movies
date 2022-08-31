@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
-import { Wrapper, PosterWrapper, ButtonWrapper, PosterName, RunTime, PosterImage } from './styled';
+import { Button } from '../index';
+import { Wrapper, PosterWrapper, PosterName, RunTime, PosterImage } from './styled';
 
 interface Props {
     btnText?: string;
@@ -19,7 +20,7 @@ export const Poster: FC<Props> = (props: Props) => {
                 {runtime && <RunTime>{runtime} </RunTime>}
             </PosterWrapper>
             {posterName && <PosterName title={posterName}>{posterName}</PosterName>}
-            <ButtonWrapper>{btnText || 'Watch Now'}</ButtonWrapper>
+            <Button btnText={btnText} path='' />
         </Wrapper>
     );
 };
