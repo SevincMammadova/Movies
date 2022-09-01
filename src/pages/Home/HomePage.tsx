@@ -52,10 +52,11 @@ export const HomePage: FC = () => {
                             key={item.id}
                             posterName={item.title || item.name}
                             posterImage={IMG_API + item.poster_path}
+                            path={`tv/${item.title || item.name}/${item.id}}`}
                         />
                     ))}
                 </PosterBlock>
-                <MoreButton to={PATH_NAMES.moviePage}>Watch More</MoreButton>
+                <MoreButton to={PATH_NAMES.playerPage}>Watch More</MoreButton>
             </ListBlock>
             <ListBlock>
                 <BlockTitle>Popular Movies</BlockTitle>
@@ -65,10 +66,11 @@ export const HomePage: FC = () => {
                             key={item.id}
                             posterName={item.title || item.name}
                             posterImage={IMG_API + item.poster_path}
+                            path={`movies/${item.title || item.name}/${item.id}}`}
                         />
                     ))}
                 </PosterBlock>
-                <MoreButton to={PATH_NAMES.moviePage}>Watch More</MoreButton>
+                <MoreButton to=''>Watch More</MoreButton>
             </ListBlock>
         </Wrapper>
     );

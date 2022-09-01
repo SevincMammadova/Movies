@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 
 import { useSelector } from 'react-redux';
 
+import { PATH_NAMES } from '../../packages';
 import { Poster } from '../../packages/components';
 import { IMG_API } from '../../packages/utils/apiKey';
 import { RootState } from '../../store/store';
@@ -16,6 +17,7 @@ export const TvShoes: FC = () => {
                     key={item.id}
                     posterImage={IMG_API + item.poster_path}
                     posterName={item.name || item.title}
+                    path={`tv/${item.title || item.name}/${item.id}}`}
                 />
             ))}
         </PosterBlock>

@@ -6,7 +6,7 @@ export const PATH_NAMES = {
     genre: 'genres/:mediaType',
     popularMovies: 'popular',
     newReleases: 'new-releases',
-    moviePage: ':movieName/:id',
+    playerPage: ':mediaType/:movieName/:id',
     moviesGenre: ':movieGenre/:id',
     TvGenre: ':tvGenre'
 };
