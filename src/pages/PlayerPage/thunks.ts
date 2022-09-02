@@ -52,7 +52,7 @@ export const initThunk = createAsyncThunk(
     init,
     async (data: any, { rejectWithValue, dispatch }) => {
         try {
-            if (data.mediaType === 'movies') {
+            if (data.mediaType === 'movie') {
                 dispatch(getMovieDataThunk(data.id));
             } else {
                 dispatch(getTvDataThunk(data.id));

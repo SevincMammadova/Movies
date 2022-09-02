@@ -15,7 +15,9 @@ import {
     MetaDataItem,
     MetaDataWrapper,
     MetaInfoBlock,
-    PlayerWrapper,
+    PlayerBlock,
+    VideoTitle,
+    VideoWrapper,
     PosterImage,
     PosterWrapper,
     OverviewWrapper
@@ -23,7 +25,8 @@ import {
 import { initThunk } from './thunks';
 
 export const PlayerPage: FC = () => {
-    const { id, mediaType } = useParams();
+    const { mediaId, category } = useParams();
+
     const dispatch = useDispatch<AppDispatch>();
 
     const {
@@ -39,17 +42,13 @@ export const PlayerPage: FC = () => {
         production_companies
     } = useSelector((state: RootState) => state.playerPage.mediaData);
 
+    console.log('player page', useParams());
+
     useEffect(() => {
-        dispatch(initThunk({ mediaType, id }));
+        dispatch(initThunk({ mediaType: category, id: mediaId }));
     }, [dispatch]);
 
-    const videoData: any = videos.results.slice(0, 1);
-
-    const key = videoData[0]?.key;
-
-    console.log(key);
-
-    const productionCompanyNames = production_companies?.map((item: any) => item?.name)?.join(',');
+    const productionCompanyNames = production_companies?.map((item: any) => item?.name)?.join(', ');
 
     const convertRuntime = (): string => {
         const h = Math.floor(runtime / 3600);
@@ -83,7 +82,7 @@ export const PlayerPage: FC = () => {
                     </div>
                     <div>
                         <MetaDataItem color={themeColors.pink}>Tagline:</MetaDataItem>
-                        <MetaDataItem>{tagline}</MetaDataItem>
+                        <MetaDataItem>{tagline || '-'}</MetaDataItem>
                     </div>
                     <div>
                         <MetaDataItem color={themeColors.pink}>Original Title:</MetaDataItem>
@@ -103,15 +102,18 @@ export const PlayerPage: FC = () => {
                 </MetaDataWrapper>
             </MetaInfoBlock>
             <OverviewWrapper>{overview}</OverviewWrapper>
-            <PlayerWrapper>
-                <ReactPlayer
-                    url={`https://www.youtube.com/watch?v=${key}`}
-                    controls
-                    width={'70%'}
-                    height={'500px'}
-                    style={{ width: '100%', height: '100%' }}
-                />
-            </PlayerWrapper>
+            <PlayerBlock>
+                {videos?.results?.map((item: any) => (
+                    <VideoWrapper key={item.id}>
+                        <VideoTitle>{item?.name || item?.title}</VideoTitle>
+                        <ReactPlayer
+                            key={item.id}
+                            controls
+                            url={`https://www.youtube.com/watch?v=${item.key}`}
+                        />
+                    </VideoWrapper>
+                ))}
+            </PlayerBlock>
         </Wrapper>
     );
 };

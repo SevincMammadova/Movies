@@ -48,7 +48,7 @@ export const Genres: FC = () => {
                           <Button
                               key={item.id}
                               btnText={item.name}
-                              path={`tv/${item.name}${item.id}`}
+                              path={`tv/${item.name}/${item.id}`}
                           />
                       ))}
             </GenresBlock>

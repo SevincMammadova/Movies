@@ -17,7 +17,7 @@ export const getPopularMoviesThunk = createAsyncThunk(
             dispatch(homePageActions.setPopularMovies(data?.results));
 
             if (!response.ok) {
-                throw new Error('Can not get popiular movies. Server error.');
+                throw new Error('Can not get popular movies. Server error.');
             }
         } catch (error: any) {
             return rejectWithValue(error.message);
@@ -30,8 +30,6 @@ export const getPopularTVThunk = createAsyncThunk(getPopularTv, async (_, { reje
         const response = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}`);
 
         const data = await response.json();
-
-        console.log('releases', data);
 
         if (!response.ok) {
             throw new Error('Can not get popular Tv. Server error.');

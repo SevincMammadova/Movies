@@ -6,5 +6,6 @@ export const themeColors = {
     valentino: '#2d114c',
     purple: '#7026B9',
     gray: '#80808087',
-    green2: '#1395a4'
+    green2: '#1395a4',
+    darkGreen: '#15112b'
 };

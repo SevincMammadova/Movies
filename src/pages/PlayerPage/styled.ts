@@ -52,10 +52,25 @@ export const OverviewWrapper = styled.div`
     padding: 10px 0;
 `;
 
-export const PlayerWrapper = styled.div`
+export const PlayerBlock = styled.div`
     width: 100%;
     height: auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+`;
+
+export const VideoWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 5px;
+    background-color: ${themeColors.darkGreen};
+    padding: 10px;
+`;
+
+export const VideoTitle = styled.div`
+    color: ${themeColors.white};
+    font-size: 18px;
+    font-weight: 700;
 `;

@@ -2,12 +2,14 @@ import React, { FC, useEffect } from 'react';
 
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
 
 import PosterImg from '../../assets/images/home_bg.jpg';
 import { PATH_NAMES } from '../../packages';
 import { Poster } from '../../packages/components';
 import { IMG_API } from '../../packages/utils/apiKey';
 import { AppDispatch, RootState } from '../../store/store';
+import { PlayerPage } from '../PlayerPage';
 import {
     Wrapper,
     PosterContainer,
@@ -36,42 +38,46 @@ export const HomePage: FC = () => {
     const firstPartOfPopularTV = popularsTv?.slice(0, 5);
 
     return (
-        <Wrapper>
-            <PosterContainer>
-                <WelcomeImage src={PosterImg} />
-                <PosterTextBlock>
-                    <PosterText>Welcome in MovieNight</PosterText>
-                    <PosterText size='20px'>Millions of movies and series. Explore now.</PosterText>
-                </PosterTextBlock>
-            </PosterContainer>
-            <ListBlock>
-                <BlockTitle>Popular TV</BlockTitle>
-                <PosterBlock>
-                    {firstPartOfPopularTV?.map((item: PopularsType) => (
-                        <Poster
-                            key={item.id}
-                            posterName={item.title || item.name}
-                            posterImage={IMG_API + item.poster_path}
-                            path={`tv/${item.title || item.name}/${item.id}}`}
-                        />
-                    ))}
-                </PosterBlock>
-                <MoreButton to={PATH_NAMES.playerPage}>Watch More</MoreButton>
-            </ListBlock>
-            <ListBlock>
-                <BlockTitle>Popular Movies</BlockTitle>
-                <PosterBlock>
-                    {firstPartOfPopularMovies?.map((item: PopularsType) => (
-                        <Poster
-                            key={item.id}
-                            posterName={item.title || item.name}
-                            posterImage={IMG_API + item.poster_path}
-                            path={`movies/${item.title || item.name}/${item.id}}`}
-                        />
-                    ))}
-                </PosterBlock>
-                <MoreButton to=''>Watch More</MoreButton>
-            </ListBlock>
-        </Wrapper>
+        <>
+            <Wrapper>
+                <PosterContainer>
+                    <WelcomeImage src={PosterImg} />
+                    <PosterTextBlock>
+                        <PosterText>Welcome in MovieNight</PosterText>
+                        <PosterText size='20px'>
+                            Millions of movies and series. Explore now.
+                        </PosterText>
+                    </PosterTextBlock>
+                </PosterContainer>
+                <ListBlock>
+                    <BlockTitle>Popular TV</BlockTitle>
+                    <PosterBlock>
+                        {firstPartOfPopularTV?.map((item: PopularsType) => (
+                            <Poster
+                                key={item.id}
+                                posterName={item.title || item.name}
+                                posterImage={IMG_API + item.poster_path}
+                                path={`tv/${item.title || item.name}/${item.id}`}
+                            />
+                        ))}
+                    </PosterBlock>
+                    <MoreButton to={PATH_NAMES.playerPage}>Watch More</MoreButton>
+                </ListBlock>
+                <ListBlock>
+                    <BlockTitle>Popular Movies</BlockTitle>
+                    <PosterBlock>
+                        {firstPartOfPopularMovies?.map((item: PopularsType) => (
+                            <Poster
+                                key={item.id}
+                                posterName={item.title || item.name}
+                                posterImage={IMG_API + item.poster_path}
+                                path={`movie/${item.title || item.name}/${item.id}`}
+                            />
+                        ))}
+                    </PosterBlock>
+                    <MoreButton to=''>Watch More</MoreButton>
+                </ListBlock>
+            </Wrapper>
+        </>
     );
 };
