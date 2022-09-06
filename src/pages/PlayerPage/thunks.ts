@@ -3,7 +3,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { apiKey } from '../../packages/utils/apiKey';
 import { getTvData, getMovieData, init } from './const';
-// import { homePageActions } from './homeSlice';
 
 export const getMovieDataThunk = createAsyncThunk(
     getMovieData,
@@ -18,8 +17,6 @@ export const getMovieDataThunk = createAsyncThunk(
             if (!response.ok) {
                 throw new Error('Can not get popiular movies. Server error.');
             }
-
-            console.log('movie data', data);
 
             return data;
         } catch (error: any) {

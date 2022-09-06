@@ -18,8 +18,8 @@ export type MediaType = {
     original_title: string;
     overview: string;
     popularity: number;
-    production_companies: [];
-    production_countries: [];
+    production_companies: ProductionCompanyType[];
+    production_countries: ProductionCountryType[];
     release_date: string;
     revenue: number;
     runtime: number;
@@ -29,7 +29,33 @@ export type MediaType = {
     name?: string;
     original_name?: string;
     video: boolean;
-    videos: { results: any[] };
+    videos: { results: VideosType[] };
     vote_average: number;
     vote_count: number;
+};
+
+export type VideosType = {
+    id: string;
+    iso_639_1: string;
+    iso_3166_1: string;
+    name: string;
+    title: string;
+    key: string;
+    site: string;
+    size: number;
+    type: string;
+    official: boolean;
+    published_at: string;
+};
+
+export type ProductionCompanyType = {
+    id: number;
+    logo_path: string;
+    name: string;
+    origin_country: string;
+};
+
+export type ProductionCountryType = {
+    iso_3166_1: string;
+    name: string;
 };

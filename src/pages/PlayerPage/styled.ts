@@ -32,6 +32,7 @@ export const PosterImage = styled.img`
 
 export const MetaDataWrapper = styled.div`
     display: flex;
+    min-width: 600px;
     flex-direction: column;
     gap: 10px;
     justify-content: center;
@@ -39,10 +40,11 @@ export const MetaDataWrapper = styled.div`
 
 export const MetaDataItem = styled.div<Props>`
     display: inline-flex;
-    gap: 50px;
+    gap: 100px;
     justify-content: space-between;
-    width: fit-content;
-    padding: 10px;
+`;
+
+export const MetaDataText = styled.div<Props>`
     color: ${({ color }) => color || themeColors.white};
 `;
 

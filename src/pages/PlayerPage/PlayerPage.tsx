@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable camelcase */
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 import ReactPlayer from 'react-player/lazy';
 import { useSelector } from 'react-redux';
@@ -20,15 +20,16 @@ import {
     VideoWrapper,
     PosterImage,
     PosterWrapper,
-    OverviewWrapper
+    OverviewWrapper,
+    MetaDataText
 } from './styled';
 import { initThunk } from './thunks';
+import { ProductionCompanyType, ProductionCountryType, VideosType } from './types';
 
 export const PlayerPage: FC = () => {
     const { mediaId, category } = useParams();
-
     const dispatch = useDispatch<AppDispatch>();
-
+    const [playerId, setPlayerId] = useState('');
     const {
         poster_path,
         overview,
@@ -39,16 +40,24 @@ export const PlayerPage: FC = () => {
         original_title,
         tagline,
         videos,
-        production_companies
+        production_companies,
+        production_countries
     } = useSelector((state: RootState) => state.playerPage.mediaData);
 
-    console.log('player page', useParams());
+    const playNow = (id: string) => {
+        setPlayerId(id);
+    };
 
     useEffect(() => {
         dispatch(initThunk({ mediaType: category, id: mediaId }));
     }, [dispatch]);
 
-    const productionCompanyNames = production_companies?.map((item: any) => item?.name)?.join(', ');
+    const productionCompanyNames = production_companies
+        ?.map((item: ProductionCompanyType) => item?.name)
+        ?.join(', ');
+    const productionCountryNames = production_countries
+        ?.map((item: ProductionCountryType) => item?.name)
+        ?.join(', ');
 
     const convertRuntime = (): string => {
         const h = Math.floor(runtime / 3600);
@@ -76,40 +85,45 @@ export const PlayerPage: FC = () => {
                     <PosterImage src={IMG_API + poster_path || ''} />
                 </PosterWrapper>
                 <MetaDataWrapper>
-                    <div>
-                        <MetaDataItem color={themeColors.pink}>Title:</MetaDataItem>
-                        <MetaDataItem>{title || name}</MetaDataItem>
-                    </div>
-                    <div>
-                        <MetaDataItem color={themeColors.pink}>Tagline:</MetaDataItem>
-                        <MetaDataItem>{tagline || '-'}</MetaDataItem>
-                    </div>
-                    <div>
-                        <MetaDataItem color={themeColors.pink}>Original Title:</MetaDataItem>
-                        <MetaDataItem>{original_title || original_name}</MetaDataItem>
-                    </div>
+                    <MetaDataItem>
+                        <MetaDataText color={themeColors.pink}> Title:</MetaDataText>
+                        <MetaDataText> {title || name}</MetaDataText>
+                    </MetaDataItem>
+                    <MetaDataItem>
+                        <MetaDataText color={themeColors.pink}> Original Title:</MetaDataText>
+                        <MetaDataText> {original_title || original_name}</MetaDataText>
+                    </MetaDataItem>
+                    <MetaDataItem>
+                        <MetaDataText color={themeColors.pink}> Tagline:</MetaDataText>
+                        <MetaDataText> {tagline || '--'}</MetaDataText>
+                    </MetaDataItem>
                     {runtime && (
-                        <div>
-                            <MetaDataItem color={themeColors.pink}>Runtime:</MetaDataItem>
-                            <MetaDataItem>{convertRuntime()}</MetaDataItem>
-                        </div>
+                        <MetaDataItem>
+                            <MetaDataText color={themeColors.pink}> Runtime:</MetaDataText>
+                            <MetaDataText> {convertRuntime()}</MetaDataText>
+                        </MetaDataItem>
                     )}
-
-                    <div>
-                        <MetaDataItem color={themeColors.pink}>Production:</MetaDataItem>
-                        <MetaDataItem>{productionCompanyNames}</MetaDataItem>
-                    </div>
+                    <MetaDataItem>
+                        <MetaDataText color={themeColors.pink}> Production company:</MetaDataText>
+                        <MetaDataText> {productionCompanyNames || '--'}</MetaDataText>
+                    </MetaDataItem>
+                    <MetaDataItem>
+                        <MetaDataText color={themeColors.pink}> Production country:</MetaDataText>
+                        <MetaDataText> {productionCountryNames || '--'}</MetaDataText>
+                    </MetaDataItem>
                 </MetaDataWrapper>
             </MetaInfoBlock>
             <OverviewWrapper>{overview}</OverviewWrapper>
             <PlayerBlock>
-                {videos?.results?.map((item: any) => (
+                {videos?.results?.map((item: VideosType) => (
                     <VideoWrapper key={item.id}>
                         <VideoTitle>{item?.name || item?.title}</VideoTitle>
                         <ReactPlayer
                             key={item.id}
                             controls
                             url={`https://www.youtube.com/watch?v=${item.key}`}
+                            onPlay={() => playNow(item.id)}
+                            playing={playerId === item.id}
                         />
                     </VideoWrapper>
                 ))}

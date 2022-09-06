@@ -20,8 +20,6 @@ export const GenrePage: FC = () => {
 
     const dispatch = useDispatch<AppDispatch>();
 
-    console.log('genre page', useParams());
-
     useEffect(() => {
         dispatch(initThunk({ mediaType, id }));
     }, [dispatch]);
