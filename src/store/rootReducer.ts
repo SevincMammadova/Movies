@@ -4,11 +4,14 @@ import {
     genresPageName,
     genresPageReducer,
     genrePageName,
-    genrePageReducer
+    genrePageReducer,
+    playerPageName,
+    playerPageReducer
 } from '../pages';
 
 export const rootReducer = {
     [homePagaSliceName]: homePageReducer,
     [genresPageName]: genresPageReducer,
-    [genrePageName]: genrePageReducer
+    [genrePageName]: genrePageReducer,
+    [playerPageName]: playerPageReducer
 };

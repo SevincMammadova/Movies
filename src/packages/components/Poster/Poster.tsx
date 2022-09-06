@@ -9,10 +9,11 @@ interface Props {
     posterName?: string | undefined;
     onClick?: () => void;
     runtime?: string;
+    path: string;
 }
 
 export const Poster: FC<Props> = (props: Props) => {
-    const { btnText, posterName, runtime, posterImage } = props;
+    const { btnText, posterName, runtime, posterImage, path } = props;
     return (
         <Wrapper>
             <PosterWrapper>
@@ -20,7 +21,7 @@ export const Poster: FC<Props> = (props: Props) => {
                 {runtime && <RunTime>{runtime} </RunTime>}
             </PosterWrapper>
             {posterName && <PosterName title={posterName}>{posterName}</PosterName>}
-            <Button btnText={btnText} path='' />
+            <Button btnText={btnText} path={path} />
         </Wrapper>
     );
 };

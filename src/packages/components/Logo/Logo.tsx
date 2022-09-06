@@ -9,9 +9,8 @@ interface Props {
 }
 
 export const Logo: FC<Props> = () => {
-
     return (
-        <Wrapper>
+        <Wrapper to='/'>
             <LogoIcon />
             <LogoTextBlock>
                 <div>
