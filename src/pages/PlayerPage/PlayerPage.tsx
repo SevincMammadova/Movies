@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom';
 import { themeColors } from '../../packages/const';
 import { IMG_API } from '../../packages/utils/apiKey';
 import { AppDispatch, RootState } from '../../store/store';
+import { ProductionCompanyType, ProductionCountryType, VideosType } from '../../types';
 import {
     Wrapper,
     MetaDataItem,
@@ -24,7 +25,6 @@ import {
     MetaDataText
 } from './styled';
 import { initThunk } from './thunks';
-import { ProductionCompanyType, ProductionCountryType, VideosType } from './types';
 
 export const PlayerPage: FC = () => {
     const { mediaId, category } = useParams();
@@ -49,6 +49,7 @@ export const PlayerPage: FC = () => {
     };
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         dispatch(initThunk({ mediaType: category, id: mediaId }));
     }, [dispatch]);
 

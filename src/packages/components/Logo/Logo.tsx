@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 
 import { themeColors } from '../../const';
 import { LogoIcon } from '../../icons';
+import { PATH_NAMES } from '../../utils/path';
 import { LogoText, LogoTextBlock, Wrapper } from './styled';
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 
 export const Logo: FC<Props> = () => {
     return (
-        <Wrapper to='/'>
+        <Wrapper to={PATH_NAMES.home}>
             <LogoIcon />
             <LogoTextBlock>
                 <div>

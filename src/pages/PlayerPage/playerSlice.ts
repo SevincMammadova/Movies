@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
 import { createSlice } from '@reduxjs/toolkit';
 
+import { MediaType } from '../../types';
 import { playerPageName } from './const';
 import { getMovieDataThunk, getTvDataThunk } from './thunks';
-import { MediaType } from './types';
 
 type InitialStateType = {
     mediaData: MediaType;

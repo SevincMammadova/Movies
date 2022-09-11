@@ -6,12 +6,15 @@ import {
     genrePageName,
     genrePageReducer,
     playerPageName,
-    playerPageReducer
+    playerPageReducer,
+    topPageName,
+    topPageReducer
 } from '../pages';
 
 export const rootReducer = {
     [homePagaSliceName]: homePageReducer,
     [genresPageName]: genresPageReducer,
     [genrePageName]: genrePageReducer,
-    [playerPageName]: playerPageReducer
+    [playerPageName]: playerPageReducer,
+    [topPageName]: topPageReducer
 };

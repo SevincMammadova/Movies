@@ -3,11 +3,10 @@ import React, { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import { Button } from '../../packages/components';
+import { Button, Tumbler } from '../../packages/components';
 import { AppDispatch, RootState } from '../../store/store';
-import { mediaType } from './const';
 import { genresPageActions } from './genresSlice';
-import { TumblerButton, TumblerWrapper, Wrapper, GenresBlock } from './styled';
+import { Wrapper, GenresBlock } from './styled';
 import { initThunk } from './thunks';
 
 export const Genres: FC = () => {
@@ -24,17 +23,7 @@ export const Genres: FC = () => {
 
     return (
         <Wrapper>
-            <TumblerWrapper>
-                {mediaType?.map((item: any) => (
-                    <TumblerButton
-                        key={item.id}
-                        isActive={item.name === tumbler}
-                        onClick={() => toggleMediaType(item.name)}
-                    >
-                        {item.name}
-                    </TumblerButton>
-                ))}
-            </TumblerWrapper>
+            <Tumbler data={['MOVIE', 'TV']} callback={toggleMediaType} />
             <GenresBlock>
                 {tumbler === 'MOVIE'
                     ? genresMovie?.map((item: any) => (

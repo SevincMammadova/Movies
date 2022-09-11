@@ -16,8 +16,12 @@ export const App: FC = () => {
                     path={`${PATH_NAMES.genre}/${PATH_NAMES.playerPage}`}
                     element={<PlayerPage />}
                 />
+                <Route
+                    path={`${PATH_NAMES.topRated}/${PATH_NAMES.playerPage}`}
+                    element={<PlayerPage />}
+                />
                 <Route path={PATH_NAMES.genres} element={<Genres />} />
-                <Route path={PATH_NAMES.top250} element={<TopPage />} />
+                <Route path={PATH_NAMES.topRated} element={<TopPage />} />
                 <Route path={PATH_NAMES.contacts} element={<Contacts />} />
                 <Route path={PATH_NAMES.genre} element={<GenrePage />} />
                 <Route path='*' element={<h1 style={{ color: 'white' }}>Page not found</h1>} />

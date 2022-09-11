@@ -1,7 +1,7 @@
 export const PATH_NAMES = {
     home: '/',
     genres: 'genres',
-    top250: 'top250',
+    topRated: 'topRated',
     contacts: 'contacts',
     genre: 'genres/:mediaType/:genre/:id',
     popularMovies: 'popular',
