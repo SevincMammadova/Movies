@@ -8,3 +8,6 @@ export { ScypeIcon } from './Scype-icon';
 export { LinkedinIcon } from './Linkedin-icon';
 export { ChevronLeftIcon } from './ChevronLeft-icon';
 export { ChevronRightIcon } from './ChevronRight-icon';
+export { PrewIcon } from './Prew-icon';
+export { NextIcon } from './Next-icon';
+export { ThreeDots } from './ThreeDots';

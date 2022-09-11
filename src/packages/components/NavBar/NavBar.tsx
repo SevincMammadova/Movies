@@ -13,7 +13,7 @@ export const NavBar: FC<Props> = () => {
         <Wrapper>
             <NavEl to={PATH_NAMES.home}>Home</NavEl>
             <NavEl to={PATH_NAMES.genres}> Genres </NavEl>
-            <NavEl to={PATH_NAMES.top250}> Top-250 </NavEl>
+            <NavEl to={PATH_NAMES.topRated}> Top Rated </NavEl>
             <NavEl to={PATH_NAMES.contacts}> Contact </NavEl>
             <SearchButton>
                 <SearchInput placeholder='Search...' />

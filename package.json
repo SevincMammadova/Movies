@@ -30,6 +30,9 @@
   },
   "homepage": "https://github.com/SevincMammadova/react_ts-boilerplate#readme",
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/material": "^5.10.4",
     "@reduxjs/toolkit": "^1.8.4",
     "@types/react-redux": "^7.1.24",
     "@types/redux-saga": "^0.10.5",
@@ -72,7 +75,6 @@
     "path": "^0.12.7",
     "prettier": "^2.7.1",
     "react-player": "^2.10.1",
-    "react-simply-carousel": "^8.3.5",
     "redux-logger": "^3.0.6",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.3.1",
