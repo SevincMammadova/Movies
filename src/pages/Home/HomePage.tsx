@@ -56,7 +56,7 @@ export const HomePage: FC = () => {
                             <Poster
                                 key={item.id}
                                 posterName={item.title || item.name}
-                                posterImage={IMG_API + item.poster_path}
+                                posterImage={item.poster_path}
                                 path={`tv/${item.title || item.name}/${item.id}`}
                             />
                         ))}

@@ -8,5 +8,6 @@ export const PATH_NAMES = {
     newReleases: 'new-releases',
     playerPage: ':category/:movieName/:mediaId',
     moviesGenre: ':movieGenre/:id',
-    TvGenre: ':tvGenre'
+    TvGenre: ':tvGenre',
+    search: 'search-results'
 };

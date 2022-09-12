@@ -47,7 +47,7 @@ export const TopPage: FC = () => {
                     : topRatedTv?.results?.map((item: MediaType) => (
                           <Poster
                               key={item.id}
-                              posterImage={IMG_API + item.poster_path}
+                              posterImage={item.poster_path}
                               posterName={item.name || item.title}
                               path={`tv/${item.title || item.name}/${item.id}`}
                           />

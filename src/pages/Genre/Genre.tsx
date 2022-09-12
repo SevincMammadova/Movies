@@ -37,7 +37,7 @@ export const GenrePage: FC = () => {
                         ? movies?.map((item: any) => (
                               <Poster
                                   key={item.id}
-                                  posterImage={IMG_API + item.poster_path}
+                                  posterImage={item.poster_path}
                                   posterName={item.name || item.title}
                                   path={`movie/${item.title || item.name}/${item.id}`}
                               />
