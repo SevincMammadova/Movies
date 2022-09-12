@@ -8,7 +8,9 @@ import {
     playerPageName,
     playerPageReducer,
     topPageName,
-    topPageReducer
+    topPageReducer,
+    searchPageName,
+    searchPageReducer
 } from '../pages';
 
 export const rootReducer = {
@@ -16,5 +18,6 @@ export const rootReducer = {
     [genresPageName]: genresPageReducer,
     [genrePageName]: genrePageReducer,
     [playerPageName]: playerPageReducer,
-    [topPageName]: topPageReducer
+    [topPageName]: topPageReducer,
+    [searchPageName]: searchPageReducer
 };

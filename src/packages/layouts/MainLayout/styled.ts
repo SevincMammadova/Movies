@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 import { themeColors } from '../../const';
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+    height: 100%;
+`;
 
 export const Header = styled.header`
     position: sticky;

@@ -17,7 +17,7 @@ export const CustomPagination: FC<Props> = ({ totalPages, currentPage, onPageCha
         siblingPagesCount: 3
     });
 
-    if (currentPage === 0 || paginationRange.length < 2) {
+    if (currentPage === 0 || paginationRange?.length < 2) {
         return null;
     }
 
@@ -29,7 +29,7 @@ export const CustomPagination: FC<Props> = ({ totalPages, currentPage, onPageCha
         onPageChange(currentPage - 1);
     };
 
-    const lastPage = paginationRange[paginationRange.length - 1];
+    const lastPage = paginationRange[paginationRange?.length - 1];
 
     return (
         <Wrapper>

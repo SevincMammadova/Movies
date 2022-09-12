@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 
+import { IMG_API } from '../../utils/apiKey';
 import { Button } from '../index';
 import { Wrapper, PosterWrapper, PosterName, RunTime, PosterImage } from './styled';
 
@@ -17,7 +18,7 @@ export const Poster: FC<Props> = (props: Props) => {
     return (
         <Wrapper>
             <PosterWrapper>
-                <PosterImage src={posterImage} />
+                <PosterImage src={IMG_API + posterImage} />
                 {runtime && <RunTime>{runtime} </RunTime>}
             </PosterWrapper>
             {posterName && <PosterName title={posterName}>{posterName}</PosterName>}

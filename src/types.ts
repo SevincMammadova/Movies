@@ -32,6 +32,7 @@ export type MediaType = {
     videos: { results: VideosType[] };
     vote_average: number;
     vote_count: number;
+    media_type?: string;
 };
 
 export type VideosType = {
