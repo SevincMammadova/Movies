@@ -11,7 +11,9 @@ import {
     TopPage,
     GenrePage,
     PlayerPage,
-    SearchResults
+    MoreMedia,
+    SearchResults,
+    NotFoundPage
 } from '../pages';
 
 export const App: FC = () => {
@@ -32,12 +34,17 @@ export const App: FC = () => {
                     path={`${PATH_NAMES.search}/${PATH_NAMES.playerPage}`}
                     element={<PlayerPage />}
                 />
+                <Route
+                    path={`${PATH_NAMES.more}/${PATH_NAMES.playerPage}`}
+                    element={<PlayerPage />}
+                />
                 <Route path={PATH_NAMES.genres} element={<Genres />} />
                 <Route path={PATH_NAMES.topRated} element={<TopPage />} />
                 <Route path={PATH_NAMES.contacts} element={<Contacts />} />
                 <Route path={PATH_NAMES.genre} element={<GenrePage />} />
+                <Route path={PATH_NAMES.more} element={<MoreMedia />} />
                 <Route path={PATH_NAMES.search} element={<SearchResults />} />
-                <Route path='*' element={<h1 style={{ color: 'white' }}>Page not found</h1>} />
+                <Route path='*' element={<NotFoundPage />} />
             </Route>
         </Routes>
     );

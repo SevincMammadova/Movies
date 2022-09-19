@@ -1,15 +1,14 @@
 import React, { FC, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Route, Routes, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import { PATH_NAMES } from '../../packages';
-import { Poster } from '../../packages/components';
+import { CustomPagination, Poster } from '../../packages/components';
 import { ChevronLeftIcon } from '../../packages/icons';
 import { IMG_API } from '../../packages/utils/apiKey';
 import { AppDispatch, RootState } from '../../store/store';
 import { Wrapper, GoBackButton, PosterBlock } from './styled';
-import { initThunk } from './thunks';
+import { getMoviesGenreInfoThunk, getTvGenreInfoThunk, initThunk } from './thunks';
 
 export const GenrePage: FC = () => {
     const movies = useSelector((state: RootState) => state.genrePage.movieGenreInfo);
@@ -21,10 +20,19 @@ export const GenrePage: FC = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
-        dispatch(initThunk({ mediaType, id }));
+        dispatch(initThunk({ mediaType, id, moviePage: movies?.page, tVPage: tvShoes?.page }));
     }, [dispatch]);
 
+    const onMoviePageChange = (value: number | string) => {
+        dispatch(getMoviesGenreInfoThunk({ id, page: value }));
+    };
+
+    const onTVPageChange = (value: number | string) => {
+        dispatch(getTvGenreInfoThunk({ id, page: value }));
+    };
+
     const goBack = () => navigate(-1);
+
     return (
         <>
             <Wrapper>
@@ -34,7 +42,7 @@ export const GenrePage: FC = () => {
                 </GoBackButton>
                 <PosterBlock>
                     {mediaType === 'movies'
-                        ? movies?.map((item: any) => (
+                        ? movies?.results?.map((item: any) => (
                               <Poster
                                   key={item.id}
                                   posterImage={item.poster_path}
@@ -42,7 +50,7 @@ export const GenrePage: FC = () => {
                                   path={`movie/${item.title || item.name}/${item.id}`}
                               />
                           ))
-                        : tvShoes?.map((item: any) => (
+                        : tvShoes?.results?.map((item: any) => (
                               <Poster
                                   key={item.id}
                                   posterImage={IMG_API + item.poster_path}
@@ -51,6 +59,19 @@ export const GenrePage: FC = () => {
                               />
                           ))}
                 </PosterBlock>
+                {mediaType === 'movies' ? (
+                    <CustomPagination
+                        totalPages={movies?.total_pages}
+                        currentPage={movies?.page}
+                        onPageChange={onMoviePageChange}
+                    />
+                ) : (
+                    <CustomPagination
+                        totalPages={tvShoes?.total_pages}
+                        currentPage={tvShoes?.page}
+                        onPageChange={onTVPageChange}
+                    />
+                )}
             </Wrapper>
         </>
     );

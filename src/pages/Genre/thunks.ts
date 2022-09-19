@@ -4,19 +4,24 @@ import { apiKey } from '../../packages/utils/apiKey';
 import { getMoviesGenreInfo, getTvGenreInfo, init } from './const';
 import { MediaDataType } from './types';
 
+type TProps = {
+    id: number | string | undefined;
+    page: number | string;
+};
+
 export const getMoviesGenreInfoThunk = createAsyncThunk(
     getMoviesGenreInfo,
-    async (id: string | undefined, { rejectWithValue }) => {
+    async ({ id, page }: TProps, { rejectWithValue }) => {
         try {
             const response = await fetch(
-                `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${id}`
+                `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${id}&page=${page}`
             );
             if (!response.ok) {
                 throw new Error('Can not get movies genres. Server error.');
             }
             const data = await response.json();
 
-            return data.results;
+            return data;
         } catch (error: any) {
             rejectWithValue(error.message);
         }
@@ -24,17 +29,17 @@ export const getMoviesGenreInfoThunk = createAsyncThunk(
 );
 export const getTvGenreInfoThunk = createAsyncThunk(
     getTvGenreInfo,
-    async (id: string | undefined, { rejectWithValue }) => {
+    async ({ id, page }: TProps, { rejectWithValue }) => {
         try {
             const response = await fetch(
-                `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&with_genres=${id}`
+                `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&with_genres=${id}&page=${page}`
             );
             if (!response.ok) {
                 throw new Error('Can not get tv genres. Server error.');
             }
             const data = await response.json();
 
-            return data.results;
+            return data;
         } catch (error: any) {
             rejectWithValue(error.message);
         }
@@ -46,9 +51,9 @@ export const initThunk = createAsyncThunk(
     async (data: MediaDataType, { rejectWithValue, dispatch }) => {
         try {
             if (data.mediaType === 'movies') {
-                dispatch(getMoviesGenreInfoThunk(data?.id));
+                dispatch(getMoviesGenreInfoThunk({ id: data?.id, page: data.moviePage }));
             } else {
-                dispatch(getTvGenreInfoThunk(data?.id));
+                dispatch(getTvGenreInfoThunk({ id: data?.id, page: data.tVPage }));
             }
         } catch (error: any) {
             rejectWithValue(error.message);

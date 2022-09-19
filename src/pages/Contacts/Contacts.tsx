@@ -65,7 +65,7 @@ export const Contacts: FC = () => {
                     <Field placeholder='Enter your subject' {...register('subject')} type='text' />
                 </FieldContainer>
                 <TextArea as='textarea' placeholder='Type your query here' {...register('query')} />
-                <SubmitButton type='submit' />
+                <SubmitButton type='submit' value={'Send message'} />
             </Form>
         </Wrapper>
     );

@@ -1,16 +1,34 @@
+/* eslint-disable camelcase */
 import { createSlice } from '@reduxjs/toolkit';
 
+import { MediaType } from '../../types';
 import { genrePageName, getMoviesGenreInfo } from './const';
 import { getMoviesGenreInfoThunk, getTvGenreInfoThunk } from './thunks';
 
 type InitialStateType = {
-    tvGenreInfo: [];
-    movieGenreInfo: [];
+    tvGenreInfo: {
+        page: number;
+        results: MediaType[];
+        total_pages: number;
+    };
+    movieGenreInfo: {
+        page: number;
+        results: MediaType[];
+        total_pages: number;
+    };
 };
 
 const initialState: InitialStateType = {
-    tvGenreInfo: [],
-    movieGenreInfo: []
+    tvGenreInfo: {
+        page: 1,
+        results: [],
+        total_pages: 0
+    },
+    movieGenreInfo: {
+        page: 1,
+        results: [],
+        total_pages: 0
+    }
 };
 
 export const genreSlice = createSlice({
