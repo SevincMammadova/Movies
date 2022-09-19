@@ -1,6 +1,7 @@
-export { HomePage, homePagaSliceName, homePageReducer } from './Home';
+export { HomePage, homePagaSliceName, homePageReducer, MoreMedia } from './Home';
 export { Genres, genresPageName, genresPageReducer } from './Genres';
 export { TopPage, topPageName, topPageReducer } from './Top';
+export { NotFoundPage } from './NotFoundPage';
 export {
     SearchResults,
     searchPageActions,

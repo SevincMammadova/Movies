@@ -9,5 +9,6 @@ export const PATH_NAMES = {
     playerPage: ':category/:movieName/:mediaId',
     moviesGenre: ':movieGenre/:id',
     TvGenre: ':tvGenre',
-    search: 'search-results'
+    search: 'search-results',
+    more: 'more/:mediaType'
 };

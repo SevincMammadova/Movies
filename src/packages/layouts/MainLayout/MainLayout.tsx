@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 
-import { searchPageActions } from '../../../pages';
 import { getSearchResultsThunk } from '../../../pages/SearchResults/thunks';
 import { AppDispatch, RootState } from '../../../store/store';
 import { InfoBlock, Logo, NavBar } from '../../components';
@@ -23,22 +22,16 @@ export const MainLayout: FC<Props> = () => {
     const page = useSelector((state: RootState) => state.searchResults.searchResult.page);
     const navigate = useNavigate();
 
-    const getSearchQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
-
-        dispatch(searchPageActions.setQuery(value?.trim()));
-    };
-
     const getSearchResults = () => {
         dispatch(getSearchResultsThunk({ page, query })).then(() => {
-            navigate(PATH_NAMES.search);
+            navigate({ pathname: PATH_NAMES.search, search: `?query=${query}&page=${page}` });
         });
     };
     return (
         <Wrapper>
             <Header>
                 <Logo />
-                <NavBar getSearchQuery={getSearchQuery} onSearchClick={getSearchResults} />
+                <NavBar onSearchClick={getSearchResults} />
             </Header>
             <Main>
                 <Outlet />

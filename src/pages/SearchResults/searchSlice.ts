@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { MediaType } from '../../types';
 import { searchPageName } from './const';
-import { getSearchResultsThunk } from './thunks';
+import { getSearchResultsThunk, getSearchResultsInPageThunk } from './thunks';
 
 type InitialStateType = {
     searchResult: {
@@ -35,6 +35,9 @@ export const searchSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getSearchResultsThunk.fulfilled, (state, action) => {
+            state.searchResult = action.payload;
+        });
+        builder.addCase(getSearchResultsInPageThunk.fulfilled, (state, action) => {
             state.searchResult = action.payload;
         });
     }

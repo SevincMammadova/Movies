@@ -2,14 +2,12 @@ import React, { FC, useEffect } from 'react';
 
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
 
 import PosterImg from '../../assets/images/home_bg.jpg';
-import { PATH_NAMES } from '../../packages';
 import { Poster } from '../../packages/components';
 import { IMG_API } from '../../packages/utils/apiKey';
 import { AppDispatch, RootState } from '../../store/store';
-import { PlayerPage } from '../PlayerPage';
+import { MediaType } from '../../types';
 import {
     Wrapper,
     PosterContainer,
@@ -22,7 +20,6 @@ import {
     PosterBlock
 } from './styled';
 import { initThunk } from './thunks';
-import { PopularsType } from './types';
 
 export const HomePage: FC = () => {
     const popularsMovies = useSelector((state: RootState) => state['@homePage'].popularMovies);
@@ -34,8 +31,8 @@ export const HomePage: FC = () => {
         dispatch(initThunk());
     }, [dispatch]);
 
-    const firstPartOfPopularMovies = popularsMovies?.slice(0, 5);
-    const firstPartOfPopularTV = popularsTv?.slice(0, 5);
+    const firstPartOfPopularMovies: MediaType[] = popularsMovies?.results?.slice(0, 5);
+    const firstPartOfPopularTV: MediaType[] = popularsTv?.results?.slice(0, 5);
 
     return (
         <>
@@ -52,7 +49,7 @@ export const HomePage: FC = () => {
                 <ListBlock>
                     <BlockTitle>Popular TV</BlockTitle>
                     <PosterBlock>
-                        {firstPartOfPopularTV?.map((item: PopularsType) => (
+                        {firstPartOfPopularTV?.map((item: MediaType) => (
                             <Poster
                                 key={item.id}
                                 posterName={item.title || item.name}
@@ -61,12 +58,12 @@ export const HomePage: FC = () => {
                             />
                         ))}
                     </PosterBlock>
-                    <MoreButton to={PATH_NAMES.playerPage}>Watch More</MoreButton>
+                    <MoreButton to='more/tv'>Watch More</MoreButton>
                 </ListBlock>
                 <ListBlock>
                     <BlockTitle>Popular Movies</BlockTitle>
                     <PosterBlock>
-                        {firstPartOfPopularMovies?.map((item: PopularsType) => (
+                        {firstPartOfPopularMovies?.map((item: MediaType) => (
                             <Poster
                                 key={item.id}
                                 posterName={item.title || item.name}
@@ -75,7 +72,7 @@ export const HomePage: FC = () => {
                             />
                         ))}
                     </PosterBlock>
-                    <MoreButton to=''>Watch More</MoreButton>
+                    <MoreButton to='more/movie'>Watch More</MoreButton>
                 </ListBlock>
             </Wrapper>
         </>

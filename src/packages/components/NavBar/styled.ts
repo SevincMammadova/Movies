@@ -5,15 +5,30 @@ import { themeColors } from '../../const';
 
 interface NProps {
     isActive?: boolean;
+    isOpen?: boolean;
 }
 
-export const Wrapper = styled.nav`
+export const Wrapper = styled.nav<NProps>`
     display: flex;
     gap: 30px;
+    align-items: center;
+    position: relative;
+
+    @media screen and (max-width: 950px) {
+        display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+        flex-direction: column;
+        position: absolute;
+        top: 67px;
+        right: 27px;
+        background-color: ${themeColors.purple};
+        z-index: 1000;
+        padding: 10px;
+        border-radius: 5px;
+    }
 `;
 
 export const NavEl = styled(NavLink)<NProps>`
-    display: flex;
+    display: inline-flex;
     text-decoration: none;
     justify-content: center;
     align-items: center;
@@ -25,6 +40,9 @@ export const NavEl = styled(NavLink)<NProps>`
     }
     &.active {
         color: ${themeColors.pink};
+    }
+    @media screen and (max-width: 950px) {
+        justify-content: flex-start;
     }
 `;
 
@@ -67,5 +85,16 @@ export const SearchIconBlock = styled.div`
     cursor: pointer;
     &:hover {
         transform: scale(1.5);
+    }
+`;
+
+export const IconWrapper = styled.div`
+    display: none;
+    vertical-align: middle;
+    @media screen and (max-width: 950px) {
+        display: flex;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
     }
 `;
