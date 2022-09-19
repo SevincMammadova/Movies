@@ -1,0 +1,11 @@
+/.git
+/.vscode
+.idea
+node_modules
+webpack.config.js
+src/index.jsx
+.eslintrc.js
+yarn-error.log
+yarn.lock
+src/packages/icons
+index.d.ts
